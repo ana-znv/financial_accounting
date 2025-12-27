@@ -6,6 +6,17 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainBottomBar());
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: AppBarThemeData(
+          backgroundColor: const Color.fromARGB(255, 54, 54, 54),
+        ),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 36, 36, 36),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color.fromARGB(255, 54, 54, 54),
+        ),
+      ),
+      home: MainBottomBar(),
+    );
   }
 }

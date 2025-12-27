@@ -1,3 +1,6 @@
+import 'package:financial_accounting/widgets/add_transaction.dart';
+import 'package:financial_accounting/widgets/history.dart';
+import 'package:financial_accounting/widgets/table_of_costs.dart';
 import 'package:flutter/material.dart';
 
 class MainBottomBar extends StatefulWidget {
@@ -10,7 +13,11 @@ class MainBottomBar extends StatefulWidget {
 class _MainBottomBarState extends State<MainBottomBar> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = [History(), Report(), Table()];
+  static final List<Widget> _widgetOptions = [
+    History(),
+    AddTransaction(),
+    TableOfCosts(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -35,45 +42,10 @@ class _MainBottomBarState extends State<MainBottomBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: const Color.fromARGB(255, 211, 192, 16),
+        unselectedItemColor: Colors.white60,
         onTap: _onItemTapped,
       ),
-    );
-  }
-}
-
-class History extends StatelessWidget {
-  const History({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('History')),
-      body: Text('History'),
-    );
-  }
-}
-
-class Report extends StatelessWidget {
-  const Report({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Report')),
-      body: Text('Report'),
-    );
-  }
-}
-
-class Table extends StatelessWidget {
-  const Table({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Table')),
-      body: Text('Table'),
     );
   }
 }
