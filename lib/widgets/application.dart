@@ -15,6 +15,9 @@ class Application extends StatelessWidget {
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Color.fromARGB(255, 54, 54, 54),
         ),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(fontSize: 22, color: Colors.white70),
+        ),
       ),
       home: MainBottomBar(),
     );
