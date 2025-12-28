@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class History extends StatelessWidget {
+class History extends StatefulWidget {
   const History({super.key});
-  final _balance = 0;
+
+  @override
+  State<History> createState() => _HistoryState();
+}
+
+class _HistoryState extends State<History> {
+  int _balance = 0;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -10,11 +17,7 @@ class History extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'History',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
-            color: const Color.fromARGB(255, 231, 231, 231),
-          ),
+          style: theme.textTheme.titleLarge,
         ),
         centerTitle: true,
       ),

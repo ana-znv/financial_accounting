@@ -17,6 +17,11 @@ class Application extends StatelessWidget {
         ),
         textTheme: TextTheme(
           bodyMedium: TextStyle(fontSize: 22, color: Colors.white70),
+          titleLarge: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+            color: const Color.fromARGB(255, 231, 231, 231),
+          )
         ),
       ),
       home: MainBottomBar(),

@@ -5,16 +5,10 @@ class TableOfCosts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Table Of Costs',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
-            color: const Color.fromARGB(255, 231, 231, 231),
-          ),
-        ),
+        title: Text('Table Of Costs', style: theme.textTheme.titleLarge),
         centerTitle: true,
       ),
       body: Text('Table'),
