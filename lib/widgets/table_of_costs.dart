@@ -80,9 +80,16 @@ class _TableOfCostsState extends State<TableOfCosts> {
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
               itemCount: widgetList.length,
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: SizedBox(height: 50, child: widgetList[index]),
+                return Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 16),
+                        child: SizedBox(height: 50, child: widgetList[index]),
+                      ),
+                    ),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                  ],
                 );
               },
             ),
