@@ -88,7 +88,14 @@ class _TableOfCostsState extends State<TableOfCosts> {
                         child: SizedBox(height: 50, child: widgetList[index]),
                       ),
                     ),
-                    IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          widgetList.removeAt(index);
+                        });
+                      },
+                      icon: Icon(Icons.delete),
+                    ),
                   ],
                 );
               },
