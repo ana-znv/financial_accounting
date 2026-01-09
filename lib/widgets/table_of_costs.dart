@@ -74,31 +74,42 @@ class _TableOfCostsState extends State<TableOfCosts> {
       ),
       body: Column(
         children: [
+          SizedBox(height: 20),
           Text('Source of Income'),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-              itemCount: widgetList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: SizedBox(height: 50, child: widgetList[index]),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: 20,
+            ),
+            child: Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                itemCount: widgetList.length,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: SizedBox(height: 50, child: widgetList[index]),
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          widgetList.removeAt(index);
-                        });
-                      },
-                      icon: Icon(Icons.delete),
-                    ),
-                  ],
-                );
-              },
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              widgetList.removeAt(index);
+                            });
+                          },
+                          icon: Icon(Icons.delete),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
           IconButton(
