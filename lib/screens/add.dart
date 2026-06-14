@@ -58,7 +58,14 @@ class _AddState extends State<Add> {
                 ),
                 style: theme.textTheme.bodyMedium,
               ),
-            )
+            ),
+            Padding(padding: EdgeInsets.only(top: 40)),
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: Color(0xFF2d6ce8)),
+              child: Text('Сохранить', style: theme.textTheme.bodyLarge,),
+            ),
           ],
         ),
       ),
