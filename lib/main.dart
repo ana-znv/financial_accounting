@@ -1,4 +1,5 @@
 import 'package:financial_accounting/screens/add.dart';
+import 'package:financial_accounting/screens/home.dart';
 import 'package:financial_accounting/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -27,10 +28,20 @@ class MainBottomAppBar extends StatefulWidget {
 }
 
 class _MainBottomAppBarState extends State<MainBottomAppBar> {
+  String price = '';
+  String descripion = '';
+
+  void updateMessage(String newPrice, String newDescription) {
+    setState(() {
+      price = newPrice;
+      descripion = newDescription;
+    });
+  }
+
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = [
-    Text("Index 0"),
-    Add(),
+  List<Widget> get _widgetOptions => [
+    Home(price: price, description: descripion,),
+    Add(onSend: updateMessage),
     Text("Index 2"),
   ];
 
@@ -55,7 +66,8 @@ class _MainBottomAppBarState extends State<MainBottomAppBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFFd9d9d9),
+        selectedItemColor: const Color.fromARGB(255, 58, 114, 255),
+        unselectedItemColor: const Color.fromARGB(255, 173, 172, 179),
         onTap: _onItemTapped,
       ),
     );

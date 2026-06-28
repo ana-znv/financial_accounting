@@ -18,6 +18,6 @@ final theme = ThemeData(
   scaffoldBackgroundColor: Color(0xFF1C1A1B),
   appBarTheme: AppBarThemeData(backgroundColor: const Color(0xFF1c1a1b)),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    backgroundColor: const Color(0xFF19181f),
+    backgroundColor: const Color(0xFF19181f)
   ),
 );

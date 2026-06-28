@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 
 class Add extends StatefulWidget {
-  const Add({super.key});
+  final Function(String, String) onSend;
+  const Add({
+    super.key,
+    required this.onSend
+  });
 
   @override
   State<Add> createState() => _AddState();
 }
 
 class _AddState extends State<Add> {
+  final priceController = TextEditingController();
+  final descripionController = TextEditingController();
+
+  @override
+  void dispose() {
+    priceController.dispose();
+    descripionController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -23,6 +37,7 @@ class _AddState extends State<Add> {
             SizedBox(
               width: 200,
               child: TextFormField(
+                controller: priceController,
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey),
@@ -45,6 +60,7 @@ class _AddState extends State<Add> {
             SizedBox(
               width: 300,
               child: TextFormField(
+                controller: descripionController,
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey),
@@ -61,7 +77,9 @@ class _AddState extends State<Add> {
             ),
             Padding(padding: EdgeInsets.only(top: 40)),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                widget.onSend(priceController.text, descripionController.text);
+              },
               style: TextButton.styleFrom(
                 backgroundColor: Color(0xFF2d6ce8)),
               child: Text('Сохранить', style: theme.textTheme.bodyLarge,),
