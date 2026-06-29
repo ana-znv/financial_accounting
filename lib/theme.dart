@@ -8,7 +8,8 @@ final theme = ThemeData(
     ),
     bodyMedium: TextStyle(
       color: Color.fromARGB(255, 176, 176, 176),
-      fontSize: 16
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
     ),
     labelMedium: TextStyle(
       color: Colors.white70,
