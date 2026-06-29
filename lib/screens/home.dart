@@ -1,20 +1,22 @@
+import 'package:financial_accounting/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  final String price;
-  final String description;
-  const Home({super.key, required this.price, required this.description});
+  final List<Transaction> transactions;
+  const Home({super.key, required this.transactions});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(
-      child: Column(
-        children: [
-          Padding(padding: EdgeInsets.only(top: 150)),
-          Text(price),
-          Text(description)
-        ],
-      ),
-    ),);
+    return Scaffold(
+      body: ListView.separated(
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            title: Text(transactions[index].price, style: TextStyle(color: Colors.red),),
+            subtitle: Text(transactions[index].description),
+          );
+        }, 
+        separatorBuilder: (BuildContext context, int index) => const Divider(), 
+        itemCount: transactions.length),
+    );
   }
 }

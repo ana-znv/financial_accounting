@@ -1,11 +1,9 @@
+import 'package:financial_accounting/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 class Add extends StatefulWidget {
-  final Function(String, String) onSend;
-  const Add({
-    super.key,
-    required this.onSend
-  });
+  final Function(Transaction) onSend;
+  const Add({super.key, required this.onSend});
 
   @override
   State<Add> createState() => _AddState();
@@ -38,6 +36,11 @@ class _AddState extends State<Add> {
               width: 200,
               child: TextFormField(
                 controller: priceController,
+                onFieldSubmitted: (value) {
+                  setState(() {
+                    priceController.clear();
+                  });
+                },
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey),
@@ -61,6 +64,11 @@ class _AddState extends State<Add> {
               width: 300,
               child: TextFormField(
                 controller: descripionController,
+                onFieldSubmitted: (value) {
+                  setState(() {
+                    descripionController.clear();
+                  });
+                },
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey),
@@ -78,11 +86,14 @@ class _AddState extends State<Add> {
             Padding(padding: EdgeInsets.only(top: 40)),
             TextButton(
               onPressed: () {
-                widget.onSend(priceController.text, descripionController.text);
+                Transaction transaction = Transaction(
+                  price: priceController.text,
+                  description: descripionController.text,
+                );
+                widget.onSend(transaction);
               },
-              style: TextButton.styleFrom(
-                backgroundColor: Color(0xFF2d6ce8)),
-              child: Text('Сохранить', style: theme.textTheme.bodyLarge,),
+              style: TextButton.styleFrom(backgroundColor: Color(0xFF2d6ce8)),
+              child: Text('Сохранить', style: theme.textTheme.bodyLarge),
             ),
           ],
         ),

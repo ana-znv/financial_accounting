@@ -1,3 +1,4 @@
+import 'package:financial_accounting/models/transaction.dart';
 import 'package:financial_accounting/screens/add.dart';
 import 'package:financial_accounting/screens/home.dart';
 import 'package:financial_accounting/theme.dart';
@@ -28,19 +29,17 @@ class MainBottomAppBar extends StatefulWidget {
 }
 
 class _MainBottomAppBarState extends State<MainBottomAppBar> {
-  String price = '';
-  String descripion = '';
+  List<Transaction> transactions = [];
 
-  void updateMessage(String newPrice, String newDescription) {
+  void updateMessage(Transaction newTransaction) {
     setState(() {
-      price = newPrice;
-      descripion = newDescription;
+      transactions.add(newTransaction);
     });
   }
 
   int _selectedIndex = 0;
   List<Widget> get _widgetOptions => [
-    Home(price: price, description: descripion,),
+    Home(transactions: transactions),
     Add(onSend: updateMessage),
     Text("Index 2"),
   ];
