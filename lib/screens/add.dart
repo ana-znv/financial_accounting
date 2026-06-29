@@ -91,6 +91,8 @@ class _AddState extends State<Add> {
                   description: descripionController.text,
                 );
                 widget.onSend(transaction);
+                priceController.clear();
+                descripionController.clear();
               },
               style: TextButton.styleFrom(backgroundColor: Color(0xFF2d6ce8)),
               child: Text('Сохранить', style: theme.textTheme.bodyLarge),
