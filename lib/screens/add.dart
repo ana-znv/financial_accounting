@@ -20,6 +20,33 @@ class _AddState extends State<Add> {
     super.dispose();
   }
 
+  SizedBox formField(TextEditingController controller) {
+    return SizedBox(
+      width: 200,
+      child: TextFormField(
+        controller: controller,
+        onFieldSubmitted: (value) {
+          setState(() {
+            controller.clear();
+          });
+        },
+        decoration: InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: const Color.fromARGB(255, 166, 164, 179),
+            ),
+          ),
+          isDense: true,
+        ),
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -32,57 +59,12 @@ class _AddState extends State<Add> {
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Text('Сумма'),
             ),
-            SizedBox(
-              width: 200,
-              child: TextFormField(
-                controller: priceController,
-                onFieldSubmitted: (value) {
-                  setState(() {
-                    priceController.clear();
-                  });
-                },
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 166, 164, 179),
-                    ),
-                  ),
-                  isDense: true,
-                ),
-                textAlign: TextAlign.center,
-                style: theme.textTheme.bodyMedium,
-              ),
-            ),
+            formField(priceController),
             Padding(
               padding: EdgeInsets.only(top: 40, bottom: 10),
               child: Text('Описание'),
             ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                controller: descripionController,
-                onFieldSubmitted: (value) {
-                  setState(() {
-                    descripionController.clear();
-                  });
-                },
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 166, 164, 179),
-                    ),
-                  ),
-                  isDense: true,
-                ),
-                style: theme.textTheme.bodyMedium,
-              ),
-            ),
+            formField(descripionController),
             Padding(padding: EdgeInsets.only(top: 40)),
             TextButton(
               onPressed: () {
